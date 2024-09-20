@@ -1,0 +1,41 @@
+{
+    "name": "texthtml/vo-identity",
+    "description": "Make comparing Value Objects easier & safer",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "TH\\VOIdentity\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TH\\VOIdentity\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mathieu Rochette",
+            "email": "mathieu@texthtml.net"
+        }
+    ],
+    "require": {
+        "texthtml/object-reaper": "dev-main"
+    },
+    "require-dev": {
+        "php": "^8.2",
+        "squizlabs/php_codesniffer": "^3.6",
+        "slevomat/coding-standard": "^8.0",
+        "phpstan/phpstan": "^1.12",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-strict-rules": "^1.1",
+        "phpunit/phpunit": "^11.3",
+        "texthtml/doctest": "^0.2.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
+        }
+    }
+}

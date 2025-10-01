@@ -21,7 +21,7 @@ trait Identity
 
     /**
      * @param self|callable():self $ref
-     * @param array-key|null $key
+     * @phpstan-param array-key|null $key
      */
     final protected static function resolve(callable $ref, int|string|null $key): self {
         if ($key === null) {
@@ -50,7 +50,7 @@ trait Identity
     }
 
     /**
-     * @return array-key
+     * @phpstan-return array-key
      */
     protected function identity(): int|string
     {
@@ -58,7 +58,7 @@ trait Identity
     }
 
     /**
-     * @return array-key|null
+     * @phpstan-return array-key|null
      */
     protected static function inputIdentity(mixed ...$args): int|string|null {
         return null;

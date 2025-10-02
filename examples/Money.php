@@ -3,7 +3,6 @@
 namespace TH\VOIdentity\Tests\Cloning;
 
 use TH\VOIdentity\Identity;
-use PHPUnit\Framework\TestCase;
 
 /**
  * ```php
@@ -33,11 +32,16 @@ final readonly class Money
     }
 
     public static function of(int|float $value, string $currency): self {
+        // @phpstan-ignore argument.type,argument.type
         return self::ofMinor((int) ($value * 100), $currency);
     }
 
+    /**
+     * @param int<1,max> $n
+     */
     public function dividedBy(int $n): self
     {
+        // @phpstan-ignore argument.type,argument.type
         return self::ofMinor($this->cents / $n, $this->currency);
     }
 }

@@ -14,13 +14,14 @@ trait Identity
      * @param array<mixed> $args
      */
     final public static function of(mixed ...$args): self {
+        // @phpstan-ignore argument.type
         $constructor = static fn () => new self(...$args);
 
         return self::resolve($constructor, self::inputIdentity(...$args));
     }
 
     /**
-     * @param self|callable():self $ref
+     * @param callable():self $ref
      * @phpstan-param array-key|null $key
      */
     final protected static function resolve(callable $ref, int|string|null $key): self {
@@ -33,6 +34,7 @@ trait Identity
         static $mem = [];
 
         if (\array_key_exists($key, $mem)) {
+            // @phpstan-ignore return.type
             return $mem[$key]->get();
         }
 
@@ -64,6 +66,9 @@ trait Identity
         return null;
     }
 
+    /**
+     * @throws \LogicException
+     */
     final public function __clone(): never
     {
         throw new \LogicException('Value Object ' . static::class . ' using ' . Identity::class . ' can\'t be cloned');
@@ -71,6 +76,7 @@ trait Identity
 
     /**
      * @param array<mixed> $data
+     * @throws \LogicException
      */
     final public function __unserialize(array $data): never
     {
@@ -88,6 +94,7 @@ trait Identity
      */
     public static function __set_state(array $data): self
     {
+        // @phpstan-ignore argument.type
         return self::of(...$data);
     }
 }

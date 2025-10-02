@@ -3,7 +3,6 @@
 namespace TH\VOIdentity\Tests\CustomIdentityFromConstructorArgs;
 
 use TH\VOIdentity\Identity;
-use PHPUnit\Framework\TestCase;
 
 final readonly class BrokenInteger
 {

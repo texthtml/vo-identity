@@ -1,8 +1,13 @@
 parameters:
-	level: 9
-	paths:
-		- src
-	exceptions:
-		check:
-			missingCheckedExceptionInThrows: true
-			tooWideThrowType: true
+    level: 9
+    paths:
+        - src
+        - examples
+    exceptions:
+        check:
+            missingCheckedExceptionInThrows: true
+            tooWideThrowType: true
+    ignoreErrors:
+        -
+            identifier: property.onlyWritten
+            path: examples/

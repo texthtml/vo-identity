@@ -3,7 +3,6 @@
 namespace TH\VOIdentity\Tests\Cloning;
 
 use TH\VOIdentity\Identity;
-use PHPUnit\Framework\TestCase;
 
 /**
  * ```php
@@ -31,7 +30,11 @@ final readonly class TsRange
     ) {
     }
 
+    /**
+     * @throws \DateMalformedStringException
+     */
     public function extendBy(string $relativeTime): self {
+        // @phpstan-ignore argument.type,argument.type
         return self::of($this->start, $this->end->modify($relativeTime));
     }
 }

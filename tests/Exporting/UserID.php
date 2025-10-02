@@ -3,7 +3,6 @@
 namespace TH\VOIdentity\Tests\Exporting;
 
 use TH\VOIdentity\Identity;
-use PHPUnit\Framework\TestCase;
 
 final readonly class UserID
 {

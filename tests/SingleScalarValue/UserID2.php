@@ -3,7 +3,6 @@
 namespace TH\VOIdentity\Tests\SingleScalarValue;
 
 use TH\VOIdentity\Identity;
-use PHPUnit\Framework\TestCase;
 
 final readonly class UserID2
 {

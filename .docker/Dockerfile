@@ -15,6 +15,7 @@ COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && \
     bash /tmp/library-scripts/dev.sh "${USERNAME}"
+RUN docker-php-ext-install zip && docker-php-ext-enable zip
 
 RUN mkdir /app && chown ${USERNAME}: /app
 

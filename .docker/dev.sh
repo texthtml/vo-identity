@@ -65,6 +65,7 @@ if [ "${PACKAGES_ALREADY_INSTALLED}" != "true" ]; then
         libicu[0-9][0-9] \
         liblttng-ust[0-9] \
         libstdc++6 \
+        libzip-dev \
         zlib1g \
         locales \
         init-system-helpers"

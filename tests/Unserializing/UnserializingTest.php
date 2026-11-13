@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace TH\VOIdentity\Tests\Unserializing;
 
-use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 
 class UnserializingTest extends TestCase
 {
@@ -14,9 +16,15 @@ class UnserializingTest extends TestCase
 
         $string = serialize($vo);
 
-        $this->expectExceptionObject(new \LogicException(
-            'Value Object ' . UserID::class . ' using ' . \TH\VOIdentity\Identity::class . ' can\'t be unserialized',
-        ));
+        $this->expectExceptionObject(
+            new \LogicException(
+                'Value Object '
+                . UserID::class
+                . ' using '
+                . \TH\VOIdentity\Identity::class
+                . ' can\'t be unserialized',
+            ),
+        );
 
         unserialize($string);
     }

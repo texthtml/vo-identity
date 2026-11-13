@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace TH\VOIdentity;
 
@@ -13,9 +15,10 @@ trait Identity
     /**
      * @param array<mixed> $args
      */
-    final public static function of(mixed ...$args): self {
+    final public static function of(mixed ...$args): self
+    {
         // @mago-expect analysis:too-many-arguments
-        $constructor = static fn () => new self(...$args);
+        $constructor = static fn() => new self(...$args);
 
         return self::resolve($constructor, self::inputIdentity(...$args));
     }
@@ -24,7 +27,8 @@ trait Identity
      * @param callable():self $ref
      * @param array-key|null $key
      */
-    final protected static function resolve(callable $ref, int|string|null $key): self {
+    final protected static function resolve(callable $ref, int|string|null $key): self
+    {
         if ($key === null) {
             $ref = $ref();
             $key = $ref->identity();
@@ -62,7 +66,8 @@ trait Identity
     /**
      * @return array-key|null
      */
-    protected static function inputIdentity(mixed ...$args): int|string|null {
+    protected static function inputIdentity(mixed ...$args): int|string|null
+    {
         return null;
     }
 

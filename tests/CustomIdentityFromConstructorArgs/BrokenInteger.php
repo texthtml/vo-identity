@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace TH\VOIdentity\Tests\CustomIdentityFromConstructorArgs;
 
@@ -14,6 +16,7 @@ final readonly class BrokenInteger
     ) {
         $ping();
     }
+
     protected static function inputIdentity(int $n): int
     {
         static $four = 4;

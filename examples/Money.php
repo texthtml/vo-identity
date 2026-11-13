@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace TH\VOIdentity\Tests\Cloning;
 
@@ -23,15 +25,17 @@ use TH\VOIdentity\Identity;
  */
 final readonly class Money
 {
-    use Identity { Identity::of as ofMinor; }
+    use Identity {
+        Identity::of as ofMinor;
+    }
 
     protected function __construct(
         private int $cents,
         private string $currency,
-    ) {
-    }
+    ) {}
 
-    public static function of(int|float $value, string $currency): self {
+    public static function of(int|float $value, string $currency): self
+    {
         return self::ofMinor((int) ($value * 100), $currency);
     }
 

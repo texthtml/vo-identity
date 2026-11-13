@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace TH\VOIdentity\Tests\NormalizedIdentity;
 
@@ -10,9 +12,8 @@ final readonly class Integer
 
     public int $n;
 
-    protected function __construct(
-        int|float $n,
-    ) {
+    protected function __construct(int|float $n)
+    {
         $this->n = (int) $n;
     }
 }

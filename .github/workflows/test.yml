@@ -42,11 +42,13 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
-      - name: Run linter
-        run: vendor/bin/phpcs -ps
+      - name: Lint (mago)
+        run: vendor/bin/mago lint
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # first call downloads the mago binary
 
-      - name: Run static analysis (PHPStan)
-        run: vendor/bin/phpstan
+      - name: Static analysis (mago)
+        run: vendor/bin/mago analyze
 
       - name: Run unit tests
         run: vendor/bin/phpunit

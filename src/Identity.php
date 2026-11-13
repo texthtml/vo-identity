@@ -14,7 +14,7 @@ trait Identity
      * @param array<mixed> $args
      */
     final public static function of(mixed ...$args): self {
-        // @phpstan-ignore argument.type
+        // @mago-expect analysis:too-many-arguments
         $constructor = static fn () => new self(...$args);
 
         return self::resolve($constructor, self::inputIdentity(...$args));
@@ -34,7 +34,7 @@ trait Identity
         static $mem = [];
 
         if (\array_key_exists($key, $mem)) {
-            // @phpstan-ignore return.type
+            // @mago-expect analysis:nullable-return-statement,analysis:invalid-return-statement
             return $mem[$key]->get();
         }
 
@@ -94,7 +94,6 @@ trait Identity
      */
     public static function __set_state(array $data): self
     {
-        // @phpstan-ignore argument.type
         return self::of(...$data);
     }
 }

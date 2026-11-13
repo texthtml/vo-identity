@@ -32,7 +32,6 @@ final readonly class Money
     }
 
     public static function of(int|float $value, string $currency): self {
-        // @phpstan-ignore argument.type,argument.type
         return self::ofMinor((int) ($value * 100), $currency);
     }
 
@@ -41,7 +40,6 @@ final readonly class Money
      */
     public function dividedBy(int $n): self
     {
-        // @phpstan-ignore argument.type,argument.type
         return self::ofMinor($this->cents / $n, $this->currency);
     }
 }

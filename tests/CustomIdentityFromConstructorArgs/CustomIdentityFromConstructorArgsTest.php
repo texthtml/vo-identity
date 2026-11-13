@@ -30,12 +30,13 @@ class CustomIdentityFromConstructorArgsTest extends TestCase
 
         Assert::assertTrue($leftConstructed, "The first VO should always be constructed");
         Assert::assertSame($expectSame, $left === $right, $expectMessage);
-
-        if ($expectSame) {
-            Assert::assertFalse($rightConstructed, "The second VO constructor should not have been called");
-        } else {
-            Assert::assertTrue($rightConstructed, "The second VO constructor should have been called");
-        }
+        Assert::assertSame(
+            !$expectSame,
+            $rightConstructed,
+            $expectSame
+                ? "The second VO constructor should not have been called"
+                : "The second VO constructor should have been called",
+        );
     }
 
     public static function cases(): iterable

@@ -1,0 +1,23 @@
+#:schema vendor/carthage-software/mago/schema.json
+version = "1"
+php-version = "8.2"
+
+[source]
+paths = ["src", "examples", "tests"]
+includes = ["vendor"]
+
+[linter.rules]
+# The `Identity` trait pattern relies on `protected` constructors: `self::of()`
+# instantiates value objects from the trait, and examples/test fixtures extend
+# the surface on purpose.
+no-protected-in-final = { enabled = false }
+# Memoization in `Identity::resolve()` trades a bit of complexity for caching;
+# Halstead flags it, which is not actionable here.
+halstead = { enabled = false }
+# Test data providers legitimately pass boolean expectations (e.g. `expectSame`).
+no-boolean-flag-parameter = { enabled = false }
+
+[analyzer]
+# Tests contain intentionally-broken fixtures (e.g. `BrokenInteger`); keep them
+# out of static analysis, like PHPStan did before.
+excludes = ["tests"]

@@ -16,6 +16,7 @@ use TH\VOIdentity\Identity;
  * assert($left !== $right);
  * ```
  */
+// @mago-expect analysis:unused-property
 final readonly class UserID
 {
     use Identity;

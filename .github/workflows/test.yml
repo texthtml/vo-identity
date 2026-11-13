@@ -15,8 +15,12 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
-        php-versions: ['8.2', '8.3']
+        php-versions: ['8.2', '8.3', '8.4', '8.5']
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # first mago call downloads its binary
 
     steps:
       - uses: actions/checkout@v7
@@ -44,8 +48,6 @@ jobs:
 
       - name: Lint (mago)
         run: vendor/bin/mago lint
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # first call downloads the mago binary
 
       - name: Static analysis (mago)
         run: vendor/bin/mago analyze

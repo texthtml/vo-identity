@@ -36,7 +36,7 @@ class CustomIdentityTest extends TestCase
             "left" => 1,
             "right" => 2,
             "expectSame" => false,
-            "expectMessage" => "BrokenInter(1) and BrokenInteger(2) are not broken so they should be different",
+            "expectMessage" => "BrokenInteger(1) and BrokenInteger(2) are not broken so they should be different",
         ];
 
         yield "3 === 1" => [

@@ -3,6 +3,7 @@
     "description": "Make comparing Value Objects easier & safer",
     "type": "library",
     "license": "MIT",
+    "keywords": ["value-object", "vo", "identity-map", "equality", "immutable"],
     "autoload": {
         "psr-4": {
             "TH\\VOIdentity\\": "src/"
@@ -20,12 +21,26 @@
         }
     ],
     "require": {
+        "php": "^8.2",
         "texthtml/object-reaper": "dev-main"
     },
     "require-dev": {
-        "php": "^8.2",
         "phpunit/phpunit": "^11.3||^12.0||^13.0",
         "texthtml/doctest": "^0.3.0",
         "carthage-software/mago": "^1.59"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "lint": "mago lint",
+        "analyze": "mago analyze",
+        "test": [
+            "@composer validate --strict",
+            "@lint",
+            "@analyze",
+            "phpunit",
+            "doctest src/ examples/"
+        ]
     }
 }

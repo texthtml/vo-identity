@@ -34,8 +34,8 @@ have been created.
 
 To identify identical Value Object, `$vo->identity()` is called and should return a valid array key. A weak reference to
 the object will be kept in a cache using that key. The next time an object would be created, if a reference with that
-ley exists it will be returned. The default implementation of `$vo->identity()` is using `serialize($vo)` to generate
-the the ID. This is valid but can generate large string and be time consuming for large objects. For better performance,
+key exists it will be returned. The default implementation of `$vo->identity()` is using `serialize($vo)` to generate
+the ID. This is valid but can generate large string and be time consuming for large objects. For better performance,
 it is recommended to override it with a specialized implementation. e.g.:
 
 ```php
@@ -79,7 +79,27 @@ when they are not referenced anywhere else and avoid memory leaks.
 To work properly a few rules must be respected:
 
 * The object must be immutable and final
-* The constructor should be pure (calling it with the same argument should always produce the same result)
+* **The constructor should be pure** (calling it with the same argument should always produce the same result)
+
+The purity requirement matters: two instances created from the same arguments are considered the *same* Value Object and
+share a single instance. A constructor that depends on anything other than its arguments would silently produce the
+wrong identity. e.g. the following Value Object is broken:
+
+```php
+final readonly class Session
+{
+    use TH\VOIdentity\Identity;
+
+    private function __construct(private Uuid $userId)
+    {
+        $this->createdAt = Clock::now(); // impure: now() differs on every construction
+    }
+}
+```
+
+Two "identical" sessions could then carry different `createdAt` values: `Session::of($id)` returns the cached instance
+when one is alive, but a construction happening when nothing else holds the previous instance (e.g. after garbage
+collection) creates a brand new one with a different timestamp.
 
 # Notes
 

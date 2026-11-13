@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace TH\VOIdentity\Tests\Cloning;
 
@@ -23,6 +25,5 @@ final readonly class UserID
 
     protected function __construct(
         private int $n,
-    ) {
-    }
+    ) {}
 }

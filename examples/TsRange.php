@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace TH\VOIdentity\Tests\Cloning;
 
@@ -27,13 +29,13 @@ final readonly class TsRange
     protected function __construct(
         private \DateTimeImmutable $start,
         private \DateTimeImmutable $end,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws \DateMalformedStringException
      */
-    public function extendBy(string $relativeTime): self {
+    public function extendBy(string $relativeTime): self
+    {
         // @phpstan-ignore argument.type,argument.type
         return self::of($this->start, $this->end->modify($relativeTime));
     }

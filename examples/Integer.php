@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace TH\VOIdentity\Tests\Cloning;
 
@@ -23,9 +25,8 @@ final readonly class Integer
 
     private int $n;
 
-    protected function __construct(
-        int|float $n,
-    ) {
+    protected function __construct(int|float $n)
+    {
         $this->n = (int) $n;
     }
 }

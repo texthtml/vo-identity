@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace TH\VOIdentity\Tests\CustomIdentity;
 
@@ -10,8 +12,7 @@ final readonly class BrokenInteger
 
     protected function __construct(
         private int $n,
-    ) {
-    }
+    ) {}
 
     protected function identity(): int
     {

@@ -74,5 +74,13 @@ jobs:
             coverage.xml
             coverage.txt
 
+      - name: Upload to Codecov
+        if: matrix.php-versions == '8.5'
+        uses: codecov/codecov-action@v7
+        with:
+          files: coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+
       - name: Run doc tests
         run: vendor/bin/doctest src/ examples/

@@ -30,6 +30,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           ini-values:  zend.assertions=1,  assert.exception=1
+          coverage: ${{ matrix.php-versions == '8.3' && 'pcov' || 'none' }}
 
       - name: Validate composer.json
         run: composer validate --strict
@@ -56,7 +57,22 @@ jobs:
         run: vendor/bin/mago analyze
 
       - name: Run unit tests
-        run: vendor/bin/phpunit
+        run: |
+          if [ "${{ matrix.php-versions }}" = "8.3" ]; then
+            vendor/bin/phpunit --coverage-clover=coverage.xml --coverage-text=coverage.txt
+            cat coverage.txt >> "$GITHUB_STEP_SUMMARY"
+          else
+            vendor/bin/phpunit
+          fi
+
+      - name: Upload coverage
+        if: matrix.php-versions == '8.3'
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage
+          path: |
+            coverage.xml
+            coverage.txt
 
       - name: Run doc tests
         run: vendor/bin/doctest src/ examples/

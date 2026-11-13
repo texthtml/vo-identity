@@ -2,7 +2,7 @@
 /.docker export-ignore
 /.github export-ignore
 /.vscode export-ignore
-/composer.lock export-ignore
+/composer.lock export-ignore -diff linguist-generated
 /examples export-ignore
 /mago.toml export-ignore
 /tests export-ignore

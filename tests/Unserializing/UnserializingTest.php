@@ -3,7 +3,6 @@
 namespace TH\VOIdentity\Tests\Unserializing;
 
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\Attributes\Test;
 
 class UnserializingTest extends TestCase

@@ -16,6 +16,7 @@ use TH\VOIdentity\Identity;
  * assert($left !== $right);
  * ```
  */
+// @mago-expect analysis:write-only-property
 final readonly class Integer
 {
     use Identity;

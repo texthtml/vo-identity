@@ -13,10 +13,12 @@ class ExportingTest extends TestCase
     {
         $left = UserID::of(1);
 
-        $export = var_export($left, true);
+        $export = var_export(value: $left, return: true);
 
-        eval("\$right = $export;");
+        // @mago-expect lint:no-eval
+        eval("\$right = {$export};");
 
+        // @mago-expect analysis:undefined-variable
         Assert::assertSame($left, $right, 'UserID with the same ID should be the same object');
     }
 }

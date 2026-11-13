@@ -35,8 +35,10 @@
     "scripts": {
         "lint": "mago lint",
         "analyze": "mago analyze",
+        "fmt": "mago fmt",
         "test": [
             "@composer validate --strict",
+            "mago fmt --check",
             "@lint",
             "@analyze",
             "phpunit",

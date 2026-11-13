@@ -38,8 +38,15 @@ trait Identity
         static $mem = [];
 
         if (\array_key_exists($key, $mem)) {
-            // @mago-expect analysis:nullable-return-statement,analysis:invalid-return-statement
-            return $mem[$key]->get();
+            $cached = $mem[$key]->get();
+
+            if ($cached !== null) {
+                return $cached;
+            }
+
+            // Stale entry: the referenced object was collected before Reaper's
+            // callback could unset it — rebuild below instead of returning null.
+            unset($mem[$key]);
         }
 
         if (!$ref instanceof self) {

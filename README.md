@@ -1,5 +1,11 @@
 # VO Identity
 
+[![Tests](https://github.com/texthtml/vo-identity/actions/workflows/test.yml/badge.svg)](https://github.com/texthtml/vo-identity/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/texthtml/vo-identity/graph/badge.svg)](https://codecov.io/gh/texthtml/vo-identity)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/texthtml/vo-identity)](https://packagist.org/packages/texthtml/vo-identity)
+[![Latest Version](https://img.shields.io/packagist/v/texthtml/vo-identity)](https://packagist.org/packages/texthtml/vo-identity)
+[![License](https://img.shields.io/packagist/l/texthtml/vo-identity)](LICENSE)
+
 Make comparing Value Objects for equality easier & safer.
 
 # Installation

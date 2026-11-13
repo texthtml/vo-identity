@@ -49,6 +49,9 @@ jobs:
       - name: Lint (mago)
         run: vendor/bin/mago lint
 
+      - name: Check formatting (mago)
+        run: vendor/bin/mago fmt --check
+
       - name: Static analysis (mago)
         run: vendor/bin/mago analyze
 

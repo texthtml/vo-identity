@@ -8,25 +8,29 @@
     "packages": [
         {
             "name": "texthtml/object-reaper",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/texthtml/php-object-reaper.git",
-                "reference": "18d0ccbae55fe5bbedd63c330d5b369316392d78"
+                "reference": "5704a40b5941e36f0f55a6f946464a79fa792f29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/texthtml/php-object-reaper/zipball/18d0ccbae55fe5bbedd63c330d5b369316392d78",
-                "reference": "18d0ccbae55fe5bbedd63c330d5b369316392d78",
+                "url": "https://api.github.com/repos/texthtml/php-object-reaper/zipball/5704a40b5941e36f0f55a6f946464a79fa792f29",
+                "reference": "5704a40b5941e36f0f55a6f946464a79fa792f29",
                 "shasum": ""
+            },
+            "require": {
+                "php": "^8.2"
             },
             "require-dev": {
                 "phpstan/extension-installer": "^1.1",
                 "phpstan/phpstan": "^2.0",
                 "phpstan/phpstan-strict-rules": "^2.0",
+                "phpunit/phpunit": "^10.5",
                 "slevomat/coding-standard": "^8.0",
-                "squizlabs/php_codesniffer": "^3.6",
-                "texthtml/doctest": "^0.2"
+                "squizlabs/php_codesniffer": "^4.0",
+                "texthtml/doctest": "^0.3"
             },
             "type": "library",
             "autoload": {
@@ -47,9 +51,9 @@
             "description": "Be notified of objects being destroyed",
             "support": {
                 "issues": "https://github.com/texthtml/php-object-reaper/issues",
-                "source": "https://github.com/texthtml/php-object-reaper/tree/v1.1.0"
+                "source": "https://github.com/texthtml/php-object-reaper/tree/v1.2.0"
             },
-            "time": "2025-02-09T19:50:13+00:00"
+            "time": "2026-11-13T21:13:49+00:00"
         }
     ],
     "packages-dev": [
